@@ -3,11 +3,13 @@ uvicorn
 databases
 sqlalchemy
 joblib
-pandas
 scikit-learn
+pandas
 pymysql
-pythjon-multipart
+python-multipart
 pyngrok
+
+
 PyJWT
 passlib
 bcrypt
