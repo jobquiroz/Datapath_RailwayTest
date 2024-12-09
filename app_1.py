@@ -14,11 +14,18 @@ def read_root():
 async def predict(file: UploadFile = File(...)):
 
     classifier = load("linear_regression.joblib")
-    
 
-    df = pd.read_csv(StringIO((await file.read()).decode('utf-8')))
-    model = load('model.joblib')
-    prediction = model.predict(df)
-    return {"prediction": prediction.tolist()}
+    features_df = pd.read_csv('selected_features.csv')
+    features = features_df['0'].to_list()
+
+    contents = await file.read()
+    df = pd.read_csv(StringIO(contents.decode('utf-8')))
+    df = df[features]
+    
+    prediction = classifier.predict(df)
+
+    return {
+        "predictions": prediction.tolist()
+    }
 
 
