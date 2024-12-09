@@ -18,7 +18,8 @@ SQLALCHEMY_DATABASE_URL = "mysql+pymysql://root:RgjXlXimdYeTksGZfhnfFtRoGtVODWCA
 
 engine = create_engine(SQLALCHEMY_DATABASE_URL)
 metadata = MetaData()
- 
+
+
 # Cargar la tabla existente
 items = Table("items", metadata, autoload_with=engine)
 
